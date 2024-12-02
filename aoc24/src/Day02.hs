@@ -3,8 +3,7 @@
 
 module Day02 (solve) where
 
-import Common.Util (Solution, allEq, countElem)
-import Data.List (permutations)
+import Common.Util (Solution)
 
 solve :: (Solution, Solution)
 solve = (solve1, solve2)
@@ -31,17 +30,13 @@ safe xs = monotone && inRange
   monotone = all (> 0) deltas || all (< 0) deltas
   inRange = all ((<= 3) . abs) deltas
 
--- >>> map (\xs -> (filter (\ls -> length ls == length xs) $ permutations xs)) (parse example)
-
 -- >>> solve1 example
 -- 2
-
 solve1 :: Solution
 solve1 = length . filter safe . parse
 
 -- >>> solve2 example
 -- 4
-
 solve2 :: Solution
 solve2 = length . filter (any safe) . map missingOne . parse
  where

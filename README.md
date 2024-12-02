@@ -6,4 +6,4 @@ Every year is organised into CLI application, which takes an integer from 1-25 a
 
 ## Overview
 - [ ] AoC 2023 (2/25) written in Rust
- - [ ] AoC 2024 (1/25) written in Haskell
+- [ ] AoC 2024 (2/25) written in Haskell
