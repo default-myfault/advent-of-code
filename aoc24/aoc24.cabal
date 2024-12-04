@@ -46,6 +46,7 @@ executable aoc24
                     , Day25
     -- other-extensions:
     build-depends:    base ^>=4.17.2.1
+                    , array
     hs-source-dirs:   app
                     , src
     default-language: GHC2021
