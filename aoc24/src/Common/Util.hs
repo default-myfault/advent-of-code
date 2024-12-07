@@ -23,3 +23,11 @@ countElem x ls = go ls 0
   go (y : ys) acc
     | y == x = go ys (acc + 1)
     | otherwise = go ys acc
+
+splitOn :: (Eq a) => a -> [a] -> ([a], [a])
+splitOn e = go []
+ where
+  go acc [] = (acc, [])
+  go acc (x : xs)
+    | x == e = (reverse acc, xs)
+    | otherwise = go (x : acc) xs
