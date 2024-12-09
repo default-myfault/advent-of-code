@@ -1,12 +1,16 @@
 module Common.Util where
 
+import Data.Array (Array)
+import Data.Array.Base (listArray)
+
 type Solution = String -> Int
 
--- | reverse function application
-(&) :: a -> (a -> b) -> b
-x & f = f x
-
-infixl 1 &
+parseGrid :: String -> Array (Int, Int) Char
+parseGrid s = listArray ((0, 0), dims) xs
+ where
+  rows = lines s
+  dims = (length rows - 1, length (head rows) - 1)
+  xs = concat rows
 
 allEq :: (Eq a) => [a] -> Bool
 allEq [] = True
@@ -31,3 +35,11 @@ splitOn e = go []
   go acc (x : xs)
     | x == e = (reverse acc, xs)
     | otherwise = go (x : acc) xs
+
+distinct :: (Eq a) => [a] -> [a]
+distinct ls = go ls []
+ where
+  go [] acc = acc
+  go (x : xs) acc
+    | x `elem` acc = go xs acc
+    | otherwise = go xs (x : acc)
